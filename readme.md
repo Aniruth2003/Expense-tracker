@@ -63,47 +63,6 @@ An interactive web-based expense tracking application built with Streamlit that 
 
 ### Building the Docker Image
 
-Create a `Dockerfile` in the root directory with the following content:
-
-```dockerfile
-FROM python:3.9-slim
-
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY . .
-
-EXPOSE 8501
-
-CMD ["streamlit", "run", "app.py"]
-```
-
-Create a `requirements.txt` file with the following dependencies:
-
-```
-streamlit==1.27.0
-pandas==2.0.3
-python-dotenv==1.0.0
-```
-
-### Running with Docker Compose
-
-Create a `docker-compose.yml` file:
-
-```yaml
-version: '3'
-
-services:
-  expense-tracker:
-    build: .
-    ports:
-      - "8501:8501"
-    volumes:
-      - ./data:/app/data
-```
-
 Run with:
 ```
 docker-compose up
